@@ -23,11 +23,5 @@ class DeviceIPhoneNormal: DeviceRatio1775 {
     override var startupLoggedOut: DeviceCoordinate {
         return DeviceCoordinate(x: 400, y: 115)
     }
-    override var encounterNoARConfirm: DeviceCoordinate {  //no AR popup after saying no on iPhone6
-        return DeviceCoordinate(x: 0, y: 0)
-    }
-    override var encounterTmp: DeviceCoordinate {
-        return DeviceCoordinate(x: 0, y: 0)
-    }
     
 }

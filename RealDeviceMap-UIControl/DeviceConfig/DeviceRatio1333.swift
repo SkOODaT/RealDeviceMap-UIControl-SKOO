@@ -90,9 +90,6 @@ class DeviceRatio1333: DeviceConfigProtocol {
     var encounterNoARConfirm: DeviceCoordinate {
         return DeviceCoordinate(x: 0, y: 0, scaler: scaler)
     }
-    var encounterTmp: DeviceCoordinate {
-        return DeviceCoordinate(x: 0, y: 0, scaler: scaler)
-    }
     var encounterPokemonRun: DeviceCoordinate {
         return DeviceCoordinate(x: 100, y: 170, scaler: scaler)
     }

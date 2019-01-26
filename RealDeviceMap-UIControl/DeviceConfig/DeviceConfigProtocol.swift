@@ -9,6 +9,8 @@ import Foundation
 
 protocol DeviceConfigProtocol {
     
+    var scaler: DeviceCoordinateScaler
+    
     // MARK: - Startup
     
     /** Green pixel in green button of startup popup. */
@@ -62,8 +64,6 @@ protocol DeviceConfigProtocol {
     var encounterNoAR: DeviceCoordinate { get }
     /** Green button of no AR(+) confirm button. */
     var encounterNoARConfirm: DeviceCoordinate { get }
-    /** Temp! Exit AR-Mode. */
-    var encounterTmp: DeviceCoordinate { get }
     /** White pixel in run from Pokemon button. */
     var encounterPokemonRun: DeviceCoordinate { get }
     /** Rex pixel in in switch Pokeball button. */

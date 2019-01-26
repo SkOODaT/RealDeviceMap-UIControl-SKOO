@@ -186,7 +186,9 @@ extension XCTestCase {
                         blue > 0.3 && blue < 0.4
                     ) {
                     Log.debug("Pokemon Found!")
-                    normalized.withOffset(CGVector(dx: x * 10, dy: y * 10)).tap()
+                    let x = deviceConfig.scaler.scaleX(x: x * 10)
+                    let y = deviceConfig.scaler.scaleY(y: y * 10)
+                    normalized.withOffset(CGVector(dx: x, dy: y)).tap()
                     return true
                 }
                 
@@ -209,8 +211,6 @@ extension XCTestCase {
             deviceConfig.encounterNoAR.toXCUICoordinate(app: app).tap()
             sleep(2 * config.delayMultiplier)
             deviceConfig.encounterNoARConfirm.toXCUICoordinate(app: app).tap()
-            sleep(3 * config.delayMultiplier)
-            deviceConfig.encounterTmp.toXCUICoordinate(app: app).tap()
             sleep(3 * config.delayMultiplier)
             screenshot = XCUIScreen.main.screenshot()
             sleep(1 * config.delayMultiplier)

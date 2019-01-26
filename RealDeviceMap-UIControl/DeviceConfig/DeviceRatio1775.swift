@@ -10,7 +10,7 @@ import XCTest
 
 class DeviceRatio1775: DeviceConfigProtocol {
     
-    private var scaler: DeviceCoordinateScaler
+    var scaler: DeviceCoordinateScaler
     
     required init(width: Int, height: Int, multiplier: Double=1.0) {
         self.scaler = DeviceCoordinateScaler(widthNow: width, heightNow: height, widthTarget: 320, heightTarget: 568, multiplier: multiplier)
@@ -89,9 +89,6 @@ class DeviceRatio1775: DeviceConfigProtocol {
     }
     var encounterNoARConfirm: DeviceCoordinate {
         return DeviceCoordinate(x: 320, y: 645, scaler: scaler)
-    }
-    var encounterTmp: DeviceCoordinate {
-        return DeviceCoordinate(x: 575, y: 107, scaler: scaler)
     }
     var encounterPokemonRun: DeviceCoordinate {
         return DeviceCoordinate(x: 50, y: 75, scaler: scaler)

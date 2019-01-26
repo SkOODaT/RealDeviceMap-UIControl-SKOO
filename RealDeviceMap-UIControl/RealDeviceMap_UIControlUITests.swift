@@ -510,8 +510,6 @@ class RealDeviceMap_UIControlUITests: XCTestCase {
             sleep(2 * config.delayMultiplier)
             deviceConfig.encounterNoARConfirm.toXCUICoordinate(app: app).tap()
             sleep(3 * config.delayMultiplier)
-            deviceConfig.encounterTmp.toXCUICoordinate(app: app).tap()
-            sleep(3 * config.delayMultiplier)
             for _ in 1...5 {
                 app.swipeUp()
                 sleep(3 * config.delayMultiplier)
