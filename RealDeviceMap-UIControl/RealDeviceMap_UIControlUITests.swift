@@ -1947,7 +1947,7 @@ class RealDeviceMap_UIControlUITests: XCTestCase {
                     Log.info("App Started")
                     isStarted = true
                     sleep(1 * config.delayMultiplier)
-	            } else {
+                } else {
                     Log.debug("App still in Startup")
                     if startupCount == 30 {
                         Log.info("App stuck in Startup. Restarting...")
