@@ -346,9 +346,9 @@ extension XCTestCase {
     /*
     // Planned detection for partially completed reloads, but doesn't seem worth it now :shrug:
     func failedTutorialMethod1(screenshot: XCUIScreenshot?=nil) -> Bool {
-        
+
         let screenshotComp = screenshot ?? getScreenshot()
-        
+
         if screenshotComp.rgbAtLocation(
             pos: deviceConfig.compareTutorialL,
             min: (red: 0.3, green: 0.5, blue: 0.6),
@@ -361,11 +361,11 @@ extension XCTestCase {
         } else {
             return false
         }
-        
+
     }
-    
+
     func failedTutorialMethod2(screenshot: XCUIScreenshot?=nil) -> Bool{
-    
+
         //let screenshotComp = screenshot ?? getScreenshot()
         /*
         if screenshotComp.rgbAtLocation(
@@ -376,13 +376,13 @@ extension XCTestCase {
         }
         */
         return true
-        
+
     }
-    
+
     func failedTutorialMethod3(screenshot: XCUIScreenshot?=nil) -> Bool{
-        
+
         //let screenshotComp = screenshot ?? getScreenshot()
-        
+
         /*if screenshotComp.rgbAtLocation(
             pos: deviceConfig.tutorialProfessorCheck,
             min: (red: 0.85, green: 0.9, blue: 0.00),
@@ -391,11 +391,11 @@ extension XCTestCase {
         }*/
         return true
     }
-    
+
     func failedTutorialMethod4(screenshot: XCUIScreenshot?=nil) -> Bool {
-        
+
         //let screenshotComp = screenshot ?? getScreenshot()
-        
+
         /*if screenshotComp.rgbAtLocation(
             pos: deviceConfig.tutorialProfessorCheck,
             min: (red: 0.85, green: 0.9, blue: 0.00),
