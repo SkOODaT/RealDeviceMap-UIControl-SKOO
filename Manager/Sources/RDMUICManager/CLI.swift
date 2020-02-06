@@ -169,6 +169,7 @@ class CLI {
             Enabled: \(device.enabled.toBool())
             AttachScreenshots: \(device.attachScreenshots.toBool())
             Nearby Tracker: \(device.nearbyTracker.toBool())
+            Wilds Only: \(device.wildsOnly.toBool())
             """
 
             print(row + "\n")
@@ -321,6 +322,11 @@ class CLI {
         let nearbyTracker = askBool("Nearby Tracker (empty = \(defaultDevice.nearbyTracker.toBool()))")
         if nearbyTracker != nil {
             defaultDevice.nearbyTracker = nearbyTracker!.toInt()
+        }
+
+        let wildsOnly = askBool("Wilds Only (empty = \(defaultDevice.wildsOnly.toBool()))")
+        if wildsOnly != nil {
+            defaultDevice.wildsOnly = wildsOnly!.toInt()
         }
 
         do {
@@ -484,6 +490,11 @@ class CLI {
             nearbyTracker = defaultDevice.nearbyTracker
         }
 
+        var wildsOnly = askBool("Wilds Only (empty = \(defaultDevice.wildsOnly.toBool()))")?.toInt()
+        if wildsOnly == nil {
+            wildsOnly = defaultDevice.wildsOnly
+        }
+
         device.uuid = uuid
         device.name = name
         device.backendURL = backendURL
@@ -514,6 +525,7 @@ class CLI {
         device.enabled = enabled!
         device.attachScreenshots = attachScreenshots!
         device.nearbyTracker = nearbyTracker!
+        device.wildsOnly = wildsOnly!
 
         do {
             try device.create()
@@ -689,6 +701,11 @@ class CLI {
         let nearbyTracker = askBool("Nearby Tracker (empty = \(device.nearbyTracker.toBool()))")
         if nearbyTracker != nil {
             device.nearbyTracker = nearbyTracker!.toInt()
+        }
+
+        let wildsOnly = askBool("Wilds Only (empty = \(device.wildsOnly.toBool()))")
+        if wildsOnly != nil {
+            device.wildsOnly = wildsOnly!.toInt()
         }
 
         do {

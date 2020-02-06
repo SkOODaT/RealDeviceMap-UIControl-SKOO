@@ -213,6 +213,11 @@
             value = "$(nearbyTracker)"
             isEnabled = "YES">
          </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "wildsOnly"
+            value = "$(wildsOnly)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
       </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>

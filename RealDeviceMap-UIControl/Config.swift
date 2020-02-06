@@ -40,6 +40,7 @@ class Config {
     var enabled: Bool
     var attachScreenshots: Bool
     var nearbyTracker: Bool
+    var wildsOnly: Bool
 
     init() {
 
@@ -76,6 +77,7 @@ class Config {
         enabled = enviroment["enabled"]?.toBool() ?? true
         attachScreenshots = enviroment["attachScreenshots"]?.toBool() ?? false
         nearbyTracker = enviroment["nearbyTracker"]?.toBool() ?? false
+        wildsOnly = enviroment["wildsOnly"]?.toBool() ?? false
     }
 
 }

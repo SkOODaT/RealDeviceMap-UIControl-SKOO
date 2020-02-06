@@ -54,6 +54,7 @@ class Device: SQLiteStORM, Equatable, Hashable {
     var enabled: Int
     var attachScreenshots: Int
     var nearbyTracker: Int
+    var wildsOnly: Int
 
     override init() {
         self.uuid = ""
@@ -86,6 +87,7 @@ class Device: SQLiteStORM, Equatable, Hashable {
         self.enabled = 1
         self.attachScreenshots = 0
         self.nearbyTracker = 0
+        self.wildsOnly = 0
         super.init()
     }
 
@@ -94,7 +96,8 @@ class Device: SQLiteStORM, Equatable, Hashable {
          targetMaxDistance: Double, itemFullCount: Int, questFullCount: Int, itemsPerStop: Int, minDelayLogout: Double,
          maxNoQuestCount: Int, maxFailedCount: Int, maxEmptyGMO: Int, startupLocationLat: Double,
          startupLocationLon: Double, encounterMaxWait: Int, encounterDelay: Double, fastIV: Int, ultraIV: Int,
-         deployEggs: Int, token: String, ultraQuests: Int, enabled: Int, attachScreenshots: Int, nearbyTracker: Int) {
+         deployEggs: Int, token: String, ultraQuests: Int, enabled: Int, attachScreenshots: Int, nearbyTracker: Int,
+         wildsOnly: Int) {
         self.uuid = uuid
         self.name = name
         self.backendURL = backendURL
@@ -125,6 +128,7 @@ class Device: SQLiteStORM, Equatable, Hashable {
         self.enabled = enabled
         self.attachScreenshots = attachScreenshots
         self.nearbyTracker = nearbyTracker
+        self.wildsOnly = wildsOnly
         super.init()
     }
 
@@ -163,6 +167,7 @@ class Device: SQLiteStORM, Equatable, Hashable {
         enabled = this.data["enabled"] as? Int ?? 1
         attachScreenshots = this.data["attachScreenshots"] as? Int ?? 0
         nearbyTracker = this.data["nearbyTracker"] as? Int ?? 0
+        wildsOnly = this.data["wildsOnly"] as? Int ?? 0
     }
 
     static func getAll() -> [Device] {
@@ -218,6 +223,7 @@ class Device: SQLiteStORM, Equatable, Hashable {
         var hasEnabled = false
         var hasAttachScreenshots = false
         var hasNearbyTracker = false
+        var hasWildsOnly = false
 
         let rows = try sqlRows("PRAGMA table_info(\(table()))", params: [String]())
         for row in rows {
@@ -242,6 +248,8 @@ class Device: SQLiteStORM, Equatable, Hashable {
                 hasAttachScreenshots = true
             } else if name == "nearbyTracker" {
                 hasNearbyTracker = true
+            } else if name == "wildsOnly" {
+                hasWildsOnly = true
             }
         }
 
@@ -274,6 +282,9 @@ class Device: SQLiteStORM, Equatable, Hashable {
         }
         if !hasNearbyTracker {
             try sqlExec("ALTER TABLE \(table()) ADD COLUMN nearbyTracker INTEGER DEFAULT 0")
+        }
+        if !hasWildsOnly {
+            try sqlExec("ALTER TABLE \(table()) ADD COLUMN wildsOnly INTEGER DEFAULT 0")
         }
     }
 
