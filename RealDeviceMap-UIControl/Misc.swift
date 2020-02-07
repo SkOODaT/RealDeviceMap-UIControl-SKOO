@@ -1203,6 +1203,41 @@ extension XCTestCase {
 
     }
 
+    func eggDeploy() -> Bool {
+        Log.test("Starting eggDeploy()")
+
+        var index = 0
+        var hasEgg = false
+
+        deviceConfig.closeMenu.toXCUICoordinate(app: app).tap()
+        sleep(1 * config.delayMultiplier)
+        deviceConfig.openItems.toXCUICoordinate(app: app).tap()
+        sleep(1 * config.delayMultiplier)
+
+        while index < deviceConfig.itemDeleteYs.count {
+            let screenshot = XCUIScreen.main.screenshot()
+            if itemIsEgg(screenshot, x: deviceConfig.itemEggX, y: deviceConfig.itemDeleteYs[index]) {
+                hasEgg = true
+                break
+            }
+            index += 1
+        }
+
+        if hasEgg {
+            Log.test("New egg found. Deploying it.")
+            deviceConfig.itemEggMenuItem.toXCUICoordinate(app: app).tap()
+            sleep(1 * config.delayMultiplier)
+            deviceConfig.itemEggDeploy.toXCUICoordinate(app: app).tap()
+            sleep(2 * config.delayMultiplier)
+            return true
+        } else {
+            Log.test("No egg found or there's already has an active egg. Closing Menu.")
+            deviceConfig.closeMenu.toXCUICoordinate(app: app).tap()
+            sleep(1 * config.delayMultiplier)
+            return false
+        }
+    }
+
     func itemHasDelete(_ screenshot: XCUIScreenshot, x: Int, y: Int) -> Bool {
 
         return screenshot.rgbAtLocation(

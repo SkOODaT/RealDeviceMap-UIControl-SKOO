@@ -1064,6 +1064,7 @@ class RealDeviceMap_UIControlUITests: XCTestCase {
 
         var currentQuests = self.config.questFullCount
         var currentItems = self.config.itemFullCount
+        var eggStart = Date(timeInterval: -1860, since: Date())
 
         var failedToGetJobCount = 0
         var failedCount = 0
@@ -1500,6 +1501,23 @@ class RealDeviceMap_UIControlUITests: XCTestCase {
                                         sleep(1)
                                     }
                                 }
+
+                                if self.config.ultraQuests && self.config.deployEggs && eggStart < Date() {
+                                    self.freeScreen()
+                                    Log.debug("Deploying an egg")
+                                    sleep(1)
+                                    let i = Double.random(in: 0...60)
+                                    if self.eggDeploy() {
+                                        // if an egg was used, set the timer to 31 minutes
+                                        eggStart = Date(timeInterval: 1860+i, since: Date())
+                                    } else {
+                                        // if no egg was used, set the timer to 16 minutes so it rechecks
+                                        // useful if you get more eggs from leveling up
+                                        eggStart = Date(timeInterval: 960+i, since: Date())
+                                    }
+                                    Log.debug("Egg timer set to \(eggStart) UTC for a recheck")
+                                }
+
                                 self.newCreated = false
 
                                 self.lock.lock()
