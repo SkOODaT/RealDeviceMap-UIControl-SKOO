@@ -1323,6 +1323,8 @@ class RealDeviceMap_UIControlUITests: XCTestCase {
                                 if self.config.nearbyTracker {
                                     self.hasnearby = self.checkNearbyPixel()
                                     sleep(2)
+                                    self.clickPassengerWarning()
+                                    sleep(2)
                                     self.hasnearby = self.checkNearbyPixel()
                                     Log.info("POKEMON hasnearby \(self.hasnearby)")
                                     if !self.hasnearby {
@@ -1402,6 +1404,8 @@ class RealDeviceMap_UIControlUITests: XCTestCase {
                                 }
                                 if self.config.nearbyTracker {
                                     self.hasnearby = self.checkNearbyPixel()
+                                    sleep(2)
+                                    self.clickPassengerWarning()
                                     sleep(2)
                                     self.hasnearby = self.checkNearbyPixel()
                                     Log.info("RAID hasnearby \(self.hasnearby)")
@@ -1920,6 +1924,8 @@ class RealDeviceMap_UIControlUITests: XCTestCase {
                                 }
                                 if self.config.nearbyTracker {
                                     self.hasnearby = self.checkNearbyPixel()
+                                    sleep(2)
+                                    self.clickPassengerWarning()
                                     sleep(2)
                                     self.hasnearby = self.checkNearbyPixel()
                                     Log.info("IV hasnearby \(self.hasnearby)")
