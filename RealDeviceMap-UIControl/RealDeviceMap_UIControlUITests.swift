@@ -1252,10 +1252,10 @@ class RealDeviceMap_UIControlUITests: XCTestCase {
                         if let data = result!["data"] as? [String: Any], let action = data["action"] as? String {
                             self.action = action
                             if action == "scan_pokemon" {
-                                if self.config.nearbyTracker {
-                                    print("[STATUS] NTM Pokemon")
-                                } else if self.config.wildsOnly {
+                                if self.config.wildsOnly {
                                     print("[STATUS] WO Pokemon")
+                                } else if self.config.nearbyTracker {
+                                    print("[STATUS] NTM Pokemon")
                                 } else {
                                     print("[STATUS] Pokemon")
                                 }
