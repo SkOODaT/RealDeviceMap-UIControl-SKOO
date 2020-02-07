@@ -1144,14 +1144,14 @@ class RealDeviceMap_UIControlUITests: XCTestCase {
                     sleep(1 * config.delayMultiplier)
                     self.freeScreen()
                     sleep(1 * config.delayMultiplier)
-                    if zoomedOut {
+                    if !self.config.ultraIV && zoomedOut {
                         deviceConfig.startup.toXCUICoordinate(app: app).tap()
                         app.swipeUp()
                         deviceConfig.startup.toXCUICoordinate(app: app).tap()
                         app.swipeUp()
                         deviceConfig.startup.toXCUICoordinate(app: app).tap()
                         app.swipeUp()
-                    } else {
+                    } else if !self.config.ultraQuests {
                         deviceConfig.startup.toXCUICoordinate(app: app).tap()
                         app.swipeDown()
                         deviceConfig.startup.toXCUICoordinate(app: app).tap()
@@ -1515,7 +1515,9 @@ class RealDeviceMap_UIControlUITests: XCTestCase {
 
                                 let start = Date()
 
-                                self.app.swipeLeft()
+                                if !self.config.ultraQuests {
+                                  self.app.swipeLeft()
+                                }
 
                                 var success = false
                                 var locked = true
