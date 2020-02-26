@@ -4,7 +4,7 @@
 //
 //  Created by Florian Kostenzer on 28.11.18.
 //
-//  swiftlint:disable type_body_length function_body_length
+//  swiftlint:disable type_body_length function_body_length cyclomatic_complexity
 //
 
 import Foundation
@@ -257,18 +257,6 @@ class BuildController {
                                     status: line.replacingOccurrences(of: "[STATUS] ", with: "")
                                 )
                             }
-                        }
-                        if string!.contains(string: "[STATUS] NTM Pokemon") {
-                            self.setStatus(uuid: device.uuid, status: "Running: NTM Pokemon")
-                        }
-                        if string!.contains(string: "[STATUS] NTM Raid") {
-                            self.setStatus(uuid: device.uuid, status: "Running: NTM Raid")
-                        }
-                        if string!.contains(string: "[STATUS] NTM IV") {
-                            self.setStatus(uuid: device.uuid, status: "Running: NTM IV")
-                        }
-                        if string!.contains(string: "[STATUS] WO Pokemon") {
-                            self.setStatus(uuid: device.uuid, status: "Running: WO Pokemon")
                         }
 
                         fullLog.uic(message: string!, all: true)
